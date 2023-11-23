@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Teddy chuks",
+    "email": "teddy@mailsac.com",
+    "photo": "",
+    "role": "admin",
+    "password": "$2b$12$Ufne1FKkTYlgkQH7h/HTuOzXZEaYKs1V9k6tv2hf/hcvNPJ21zdNK",
+    "active": true
+  },
+  {
+    "name": "Smith Row",
+    "email": "smithrow@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$hT5l6lrd/1LHw0SK3.hBguzJYljReb.3R2fC.dqaiQikUrySbUX7W",
+    "active": true
+  },
+  {
+    "name": "Jane Clark",
+    "email": "janeclark@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$tQ7UQDLiMKYTSRyhKWs8DOTymdQnEuwYZE6brjhAlmoe7n7V9TZVS",
+    "active": true
+  },
+  {
+    "name": "Mark Jones",
+    "email": "markjones@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$JZvxAq4lmofI5TG/2a6yPOFP.vjKpRH1eziCzai0gna6wUcpOEE2u",
+    "active": true
+  },
+  {
+    "name": "Tony clyde",
+    "email": "tonyclyde@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$OauZvSwRbD1EAwPE9BNIX.A.eLg6izYjc8S7iMPXK0fmCubLdWtqC",
+    "active": true
+  },
+  {
+    "name": "John pope",
+    "email": "johnpope@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$KonXXJJSXAut7oIIt6ebXOo5fWHi/fReMsA0xNH2sLAOALaqt8HGm",
+    "active": true
+  },
+  {
+    "name": "Jennifer Hardy",
+    "email": "jenniferhardy@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$bDR9xpYLDzw4jCK.ucLbT.l.o/ChAkiqd95wEnSdPDVtlRRjQHAjK",
+    "active": true
+  },
+  {
+    "name": "Mark Riley",
+    "email": "markriley@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$fCG0ZgVUAmIDeqIoIBzqUenoeTcVEVefriWu31vrKArMUv7BP2Oz6",
+    "active": true
+  },
+  {
+    "name": "Scott tony",
+    "email": "scottony@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$4AImrWB7E9cEborRrX6hEelTaNwB56oPihIC8U/uY.uLElIUDUqjq",
+    "active": true
+  },
+  {
+    "name": "Liam Grenberg",
+    "email": "liamgrenberg@example.com",
+    "photo": "",
+    "role": "user",
+    "password": "$2b$12$CMz.JKJDNWKq2dZT3oG3.uLLO5i7M9w7zPdGHRH73Fs8cEHHEFmw6",
+    "active": true
+  }
+]
