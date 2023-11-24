@@ -33,6 +33,9 @@ reviewsSchema.index({ menu: 1, user: 1 }, { unique: true });
 
 reviewsSchema.pre(/^find/, function () {
   this.populate({
+    path: "menu",
+    select: "name",
+  }).populate({
     path: "user",
     select: "name photo",
   });

@@ -1,0 +1,52 @@
+const Reviews = require("../models/reviewsModel");
+const catchAsync = require("../utilities/catchAsync");
+const Orders = require("../models/orderModel");
+const AppError = require("../utilities/appError");
+
+exports.createReviews = catchAsync(async (req, res, next) => {
+  // Find all orders
+  const orders = await Orders.find({});
+
+  let hasOrderedItem = false;
+
+  for (const order of orders) {
+    // Check if the username matches
+    if (order.username === req.user.name) {
+      for (const menuItem of order.menu) {
+        if (menuItem.itemId.toString() === req.body.menu) {
+          hasOrderedItem = true;
+          break;
+        }
+      }
+      if (hasOrderedItem) {
+        break;
+      }
+    }
+  }
+
+  if (!hasOrderedItem) {
+    return next(
+      new AppError(`You can only review items you have ordered`, 403)
+    );
+  }
+
+  // If the code reaches this point, it means the condition is satisfied, and you can proceed with creating the review
+  const newReview = await Reviews.create(req.body);
+
+  res.status(201).json({
+    status: "success",
+    data: { reviews: newReview },
+  });
+});
+exports.getAllReviews = catchAsync(async (req, res) => {
+  // Searching for reviews where the menu is equal to the current menuId
+  let filter = {};
+  if (req.params.menuId) filter = { menu: req.params.menuId };
+  const reviews = await Reviews.find(filter);
+
+  res.status(200).json({
+    status: "success",
+    results: reviews.length,
+    data: { reviews },
+  });
+});

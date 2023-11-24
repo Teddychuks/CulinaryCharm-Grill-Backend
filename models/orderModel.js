@@ -16,7 +16,9 @@ const orderSchema = new mongoose.Schema(
       {
         itemId: {
           type: mongoose.Schema.ObjectId,
-          ref: "Menu",
+        },
+        category: {
+          type: String,
           required: true,
         },
         name: {

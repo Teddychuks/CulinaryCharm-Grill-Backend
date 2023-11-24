@@ -11,12 +11,15 @@ exports.createOrder = catchAsync(async (req, res, next) => {
 
   for (const { itemId, quantity } of menu) {
     const menuItem = await Menu.findById(itemId);
+
+    const menuItemType = menuItem.type;
     const menuItemName = menuItem.name;
     const menuItemPrice = menuItem.price;
     const itemTotalPrice = menuItemPrice * quantity;
 
     orderItems.push({
       itemId: itemId,
+      category: menuItemType,
       name: menuItemName,
       price: menuItemPrice,
       quantity,

@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const menuRouter = require("./routes/menuRouter");
 const orderRouter = require("./routes/orderRouter");
 const userRouter = require("./routes/userRouter");
+const reviewsRouter = require("./routes/reviewsRouter");
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use((req, res, next) => {
 app.use("/menu", menuRouter);
 app.use("/orders", orderRouter);
 app.use("/users", userRouter);
+app.use("/reviews", reviewsRouter);
 
 module.exports = app;

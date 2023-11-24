@@ -1,8 +1,11 @@
 // Your router setup
 const express = require("express");
-const router = express.Router();
 
 const menuController = require("../controllers/menuController");
+const reviewsRouter = require("./reviewsRouter");
+const router = express.Router();
+
+router.use("/:type/:menuId/reviews", reviewsRouter);
 
 router.route("/:type").get(menuController.getAllMenuItems);
 router.route("/:type/create").post(menuController.createMenuItem);
