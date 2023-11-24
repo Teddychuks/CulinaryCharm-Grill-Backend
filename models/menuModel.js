@@ -10,7 +10,6 @@ const menuSchema = new Schema(
     },
     name: {
       type: String,
-      required: true,
       unique: true,
       trim: true,
       maxlength: [
@@ -47,9 +46,8 @@ const menuSchema = new Schema(
       required: [true, "Calories should be stated on each item"],
       max: [2500, "Calories should not be above 2,500"],
     },
-    picture: {
+    photo: {
       type: String,
-      default: "",
     },
     ratingsAverage: {
       type: Number,

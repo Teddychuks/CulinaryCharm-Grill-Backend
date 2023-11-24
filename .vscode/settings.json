@@ -5,6 +5,7 @@
     "deletecocktail",
     "getcocktail",
     "getmenu",
+    "orderstats",
     "virtuals"
   ]
 }

@@ -5,6 +5,7 @@ const menuController = require("../controllers/menuController");
 const reviewsRouter = require("./reviewsRouter");
 const router = express.Router();
 
+router.route("/statistics").get(menuController.aggregateMenuStatistics);
 router.use("/:type/:menuId/reviews", reviewsRouter);
 
 router.route("/:type").get(menuController.getAllMenuItems);

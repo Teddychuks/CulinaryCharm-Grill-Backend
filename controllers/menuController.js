@@ -95,3 +95,42 @@ exports.deleteMenuItem = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
+exports.aggregateMenuStatistics = catchAsync(async (req, res, next) => {
+  const stats = await Menu.aggregate([
+    {
+      $group: {
+        _id: "$type",
+        numRating: { $sum: "$ratingsQuantity" },
+        avgRating: { $avg: "$ratingsAverage" },
+        avgPrice: { $avg: "$price" },
+        minPrice: { $min: "$price" },
+        maxPrice: { $max: "$price" },
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        numRating: 1,
+        avgRating: { $round: ["$avgRating", 2] },
+        avgPrice: { $round: ["$avgPrice", 2] },
+        minPrice: 1,
+        maxPrice: 1,
+      },
+    },
+    {
+      $sort: {
+        avgRating: -1,
+      },
+    },
+  ]);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      statistics: stats,
+    },
+  });
+});
+
+// explain(mongodb), callScan

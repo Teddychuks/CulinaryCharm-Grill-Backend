@@ -77,3 +77,185 @@ exports.deleteOrder = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
+// exports.orderStatistics = catchAsync(async (req, res, next) => {
+//   const [
+//     totalRevenueOvertime,
+//     popularMenuItems,
+//     averageOrderValue,
+//     userSpendingPatterns,
+//     topCustomers,
+//     quantitySoldOverTime,
+//   ] = await Promise.all([
+//     Order.aggregate([
+//       {
+//         $group: {
+//           _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+//           totalRevenue: { $sum: "$sumTotalPrice" },
+//         },
+//       },
+//     ]),
+//     Order.aggregate([
+//       { $unwind: "$menu" },
+//       {
+//         $group: {
+//           _id: "$menu.itemId",
+//           name: { $first: "$menu.name" },
+//           totalQuantitySold: { $sum: "$menu.quantity" },
+//         },
+//       },
+//       { $sort: { totalQuantitySold: -1 } },
+//     ]),
+//     Order.aggregate([
+//       {
+//         $group: {
+//           _id: null,
+//           averageOrderValue: { $avg: "$sumTotalPrice" },
+//         },
+//       },
+//       {
+//         $project: {
+//           averageOrderValue: { $round: ["$averageOrderValue", 2] },
+//         },
+//       },
+//     ]),
+//     Order.aggregate([
+//       {
+//         $group: {
+//           _id: "$username",
+//           totalSpending: { $sum: "$sumTotalPrice" },
+//         },
+//       },
+//       { $sort: { totalSpending: -1 } },
+//     ]),
+//     Order.aggregate([
+//       {
+//         $group: {
+//           _id: "$username",
+//           totalSpending: { $sum: "$sumTotalPrice" },
+//         },
+//       },
+//       { $sort: { totalSpending: -1 } },
+//       { $limit: 7 },
+//     ]),
+//     Order.aggregate([
+//       { $unwind: "$menu" },
+//       {
+//         $group: {
+//           _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+//           totalQuantitySold: { $sum: "$menu.quantity" },
+//         },
+//       },
+//     ]),
+//   ]);
+
+//   res.status(200).json({
+//     status: "success",
+//     orderstats: {
+//       totalRevenueOvertime,
+//       popularMenuItems,
+//       averageOrderValue,
+//       userSpendingPatterns,
+//       topCustomers,
+//       quantitySoldOverTime,
+//     },
+//   });
+// });
+
+exports.orderStatistics = catchAsync(async (req, res, next) => {
+  const result = await Order.aggregate([
+    {
+      $facet: {
+        totalRevenueOvertime: [
+          {
+            $group: {
+              _id: {
+                date: {
+                  $dateToString: { format: "%Y-%m-%d", date: "$createdAt" },
+                },
+              },
+              totalRevenue: { $sum: "$sumTotalPrice" },
+            },
+          },
+        ],
+        popularMenuItems: [
+          { $unwind: "$menu" },
+          {
+            $group: {
+              _id: "$menu.itemId",
+              name: { $first: "$menu.name" },
+              totalQuantitySold: { $sum: "$menu.quantity" },
+            },
+          },
+          { $sort: { totalQuantitySold: -1 } },
+        ],
+        averageOrderValue: [
+          {
+            $group: {
+              _id: null,
+              averageOrderValue: { $avg: "$sumTotalPrice" },
+            },
+          },
+          {
+            $project: {
+              averageOrderValue: { $round: ["$averageOrderValue", 2] },
+            },
+          },
+        ],
+        userSpendingPatterns: [
+          {
+            $group: {
+              _id: "$username",
+              totalSpending: { $sum: "$sumTotalPrice" },
+            },
+          },
+          { $sort: { totalSpending: -1 } },
+        ],
+        topCustomers: [
+          {
+            $group: {
+              _id: "$username",
+              totalSpending: { $sum: "$sumTotalPrice" },
+            },
+          },
+          { $sort: { totalSpending: -1 } },
+          { $limit: 7 },
+        ],
+        quantitySoldOverTime: [
+          { $unwind: "$menu" },
+          {
+            $group: {
+              _id: {
+                date: {
+                  $dateToString: { format: "%Y-%m-%d", date: "$createdAt" },
+                },
+              },
+              totalQuantitySold: { $sum: "$menu.quantity" },
+            },
+          },
+        ],
+      },
+    },
+  ]);
+
+  const {
+    totalRevenueOvertime,
+    popularMenuItems,
+    averageOrderValue,
+    userSpendingPatterns,
+    topCustomers,
+    quantitySoldOverTime,
+  } = result[0];
+
+  res.status(200).json({
+    status: "success",
+    orderstats: {
+      totalRevenueOvertime,
+      popularMenuItems,
+      averageOrderValue,
+      userSpendingPatterns,
+      topCustomers,
+      quantitySoldOverTime,
+    },
+  });
+});

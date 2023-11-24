@@ -7,22 +7,13 @@ exports.createReviews = catchAsync(async (req, res, next) => {
   // Find all orders
   const orders = await Orders.find({});
 
-  let hasOrderedItem = false;
-
-  for (const order of orders) {
-    // Check if the username matches
-    if (order.username === req.user.name) {
-      for (const menuItem of order.menu) {
-        if (menuItem.itemId.toString() === req.body.menu) {
-          hasOrderedItem = true;
-          break;
-        }
-      }
-      if (hasOrderedItem) {
-        break;
-      }
-    }
-  }
+  const hasOrderedItem = orders.some(
+    (order) =>
+      order.username === req.user.name &&
+      order.menu.some(
+        (menuItem) => menuItem.itemId.toString() === req.body.menu
+      )
+  );
 
   if (!hasOrderedItem) {
     return next(

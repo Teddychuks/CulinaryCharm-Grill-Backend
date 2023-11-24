@@ -6,7 +6,7 @@
     "price": 15,
     "preparationTime": "20 minutes",
     "calories": 220,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.7,
     "ratingsQuantity": 5
@@ -18,7 +18,7 @@
     "price": 12,
     "preparationTime": "15 minutes",
     "calories": 150,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.2,
     "ratingsQuantity": 4
@@ -30,7 +30,7 @@
     "price": 14,
     "preparationTime": "30 minutes",
     "calories": 180,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.5,
     "ratingsQuantity": 7
@@ -42,7 +42,7 @@
     "price": 11,
     "preparationTime": "25 minutes",
     "calories": 160,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 3.8,
     "ratingsQuantity": 8
@@ -54,7 +54,7 @@
     "price": 13,
     "preparationTime": "35 minutes",
     "calories": 250,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.0,
     "ratingsQuantity": 6
@@ -66,7 +66,7 @@
     "price": 10,
     "preparationTime": "20 minutes",
     "calories": 180,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 3.7,
     "ratingsQuantity": 9
@@ -78,7 +78,7 @@
     "price": 16,
     "preparationTime": "40 minutes",
     "calories": 220,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.3,
     "ratingsQuantity": 5
@@ -90,7 +90,7 @@
     "price": 12,
     "preparationTime": "30 minutes",
     "calories": 210,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 3.9,
     "ratingsQuantity": 6
@@ -102,7 +102,7 @@
     "price": 13,
     "preparationTime": "35 minutes",
     "calories": 240,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.9,
     "ratingsQuantity": 7
@@ -114,7 +114,7 @@
     "price": 11,
     "preparationTime": "25 minutes",
     "calories": 160,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 3.5,
     "ratingsQuantity": 8
@@ -126,7 +126,7 @@
     "price": 14,
     "preparationTime": "30 minutes",
     "calories": 180,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.4,
     "ratingsQuantity": 5
@@ -139,7 +139,7 @@
     "price": 32,
     "preparationTime": "40 minutes",
     "calories": 400,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.3,
     "ratingsQuantity": 6
@@ -151,7 +151,7 @@
     "price": 30,
     "preparationTime": "45 minutes",
     "calories": 450,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.1,
     "ratingsQuantity": 5
@@ -163,7 +163,7 @@
     "price": 35,
     "preparationTime": "50 minutes",
     "calories": 480,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.4,
     "ratingsQuantity": 7
@@ -175,7 +175,7 @@
     "price": 28,
     "preparationTime": "30 minutes",
     "calories": 380,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.7,
     "ratingsQuantity": 4
@@ -187,7 +187,7 @@
     "price": 36,
     "preparationTime": "55 minutes",
     "calories": 520,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.9,
     "ratingsQuantity": 6
@@ -199,7 +199,7 @@
     "price": 34,
     "preparationTime": "50 minutes",
     "calories": 460,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.2,
     "ratingsQuantity": 5
@@ -211,7 +211,7 @@
     "price": 38,
     "preparationTime": "40 minutes",
     "calories": 420,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.8,
     "ratingsQuantity": 4
@@ -223,7 +223,7 @@
     "price": 30,
     "preparationTime": "35 minutes",
     "calories": 400,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.5,
     "ratingsQuantity": 5
@@ -235,7 +235,7 @@
     "price": 42,
     "preparationTime": "45 minutes",
     "calories": 500,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.6,
     "ratingsQuantity": 6
@@ -247,7 +247,7 @@
     "price": 32,
     "preparationTime": "40 minutes",
     "calories": 420,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.0,
     "ratingsQuantity": 5
@@ -260,7 +260,7 @@
     "price": 50,
     "preparationTime": "40 minutes",
     "calories": 800,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.2,
     "ratingsQuantity": 6
@@ -272,7 +272,7 @@
     "price": 52,
     "preparationTime": "45 minutes",
     "calories": 850,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.4,
     "ratingsQuantity": 7
@@ -284,7 +284,7 @@
     "price": 55,
     "preparationTime": "50 minutes",
     "calories": 900,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.6,
     "ratingsQuantity": 6
@@ -296,7 +296,7 @@
     "price": 50,
     "preparationTime": "30 minutes",
     "calories": 750,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.5,
     "ratingsQuantity": 5
@@ -308,7 +308,7 @@
     "price": 58,
     "preparationTime": "55 minutes",
     "calories": 800,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.1,
     "ratingsQuantity": 7
@@ -320,7 +320,7 @@
     "price": 54,
     "preparationTime": "50 minutes",
     "calories": 780,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.7,
     "ratingsQuantity": 8
@@ -332,7 +332,7 @@
     "price": 60,
     "preparationTime": "40 minutes",
     "calories": 720,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.9,
     "ratingsQuantity": 9
@@ -344,7 +344,7 @@
     "price": 55,
     "preparationTime": "35 minutes",
     "calories": 700,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.8,
     "ratingsQuantity": 7
@@ -356,7 +356,7 @@
     "price": 65,
     "preparationTime": "45 minutes",
     "calories": 750,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.5,
     "ratingsQuantity": 6
@@ -368,7 +368,7 @@
     "price": 50,
     "preparationTime": "40 minutes",
     "calories": 700,
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.2,
     "ratingsQuantity": 5
@@ -381,7 +381,7 @@
     "price": 12,
     "calories": 200,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.3,
     "ratingsQuantity": 4
@@ -393,7 +393,7 @@
     "price": 14,
     "calories": 150,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.7,
     "ratingsQuantity": 6
@@ -405,7 +405,7 @@
     "price": 10,
     "calories": 180,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.5,
     "ratingsQuantity": 5
@@ -417,7 +417,7 @@
     "price": 11,
     "calories": 250,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.4,
     "ratingsQuantity": 7
@@ -429,7 +429,7 @@
     "price": 13,
     "calories": 180,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.2,
     "ratingsQuantity": 6
@@ -441,7 +441,7 @@
     "price": 12,
     "calories": 160,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.6,
     "ratingsQuantity": 5
@@ -453,7 +453,7 @@
     "price": 15,
     "calories": 200,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.3,
     "ratingsQuantity": 8
@@ -465,7 +465,7 @@
     "price": 10,
     "calories": 160,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.8,
     "ratingsQuantity": 7
@@ -477,7 +477,7 @@
     "price": 11,
     "calories": 250,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.1,
     "ratingsQuantity": 4
@@ -489,7 +489,7 @@
     "price": 14,
     "calories": 180,
     "preparationTime": "5 minutes",
-    "picture": "",
+    "photo": "",
     "quantity": 1,
     "ratingsAverage": 4.4,
     "ratingsQuantity": 5
