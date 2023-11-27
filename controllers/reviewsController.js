@@ -21,7 +21,6 @@ exports.createReviews = catchAsync(async (req, res, next) => {
     );
   }
 
-  // If the code reaches this point, it means the condition is satisfied, and you can proceed with creating the review
   const newReview = await Reviews.create(req.body);
 
   res.status(201).json({

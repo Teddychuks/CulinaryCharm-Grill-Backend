@@ -1,5 +1,6 @@
 const Menu = require("../models/menuModel");
 const AppError = require("../utilities/appError");
+const apiFeatures = require("../utilities/apiFeatures");
 const catchAsync = require("../utilities/catchAsync");
 
 exports.getAllMenuItems = catchAsync(async (req, res, next) => {
@@ -9,7 +10,12 @@ exports.getAllMenuItems = catchAsync(async (req, res, next) => {
     return next(new AppError(`Invalid data type:${type}`, 404));
   }
 
-  const menuItems = await Menu.find({ type });
+  const features = new apiFeatures(Menu.find({ type }), req.query)
+    .filter()
+    .sort()
+    .limitFields();
+  const menuItems = await features.query;
+
   res.status(200).json({
     status: "success",
     results: menuItems.length,
@@ -132,5 +138,3 @@ exports.aggregateMenuStatistics = catchAsync(async (req, res, next) => {
     },
   });
 });
-
-// explain(mongodb), callScan

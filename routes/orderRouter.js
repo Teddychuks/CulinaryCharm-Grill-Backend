@@ -10,10 +10,7 @@ router.use(authController.protect);
 router.route("/").get(orderController.getAllOrders);
 router
   .route("/create")
-  .post(
-    authController.restrictTo("admin", "user"),
-    orderController.createOrder
-  );
+  .post(authController.restrictTo("user"), orderController.createOrder);
 router
   .route("/:id")
   .get(orderController.getOrder)

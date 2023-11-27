@@ -4,7 +4,6 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const xss = require("xss-clean");
-const hpp = require("hpp");
 const mongoSanitize = require("express-mongo-sanitize");
 const compression = require("compression");
 const cors = require("cors");
@@ -37,7 +36,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// ROUTES
+// Routes
 app.use("/menu", menuRouter);
 app.use("/orders", orderRouter);
 app.use("/users", userRouter);

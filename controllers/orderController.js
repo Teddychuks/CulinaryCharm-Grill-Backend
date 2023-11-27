@@ -78,94 +78,18 @@ exports.deleteOrder = catchAsync(async (req, res, next) => {
   });
 });
 
-// exports.orderStatistics = catchAsync(async (req, res, next) => {
-//   const [
-//     totalRevenueOvertime,
-//     popularMenuItems,
-//     averageOrderValue,
-//     userSpendingPatterns,
-//     topCustomers,
-//     quantitySoldOverTime,
-//   ] = await Promise.all([
-//     Order.aggregate([
-//       {
-//         $group: {
-//           _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
-//           totalRevenue: { $sum: "$sumTotalPrice" },
-//         },
-//       },
-//     ]),
-//     Order.aggregate([
-//       { $unwind: "$menu" },
-//       {
-//         $group: {
-//           _id: "$menu.itemId",
-//           name: { $first: "$menu.name" },
-//           totalQuantitySold: { $sum: "$menu.quantity" },
-//         },
-//       },
-//       { $sort: { totalQuantitySold: -1 } },
-//     ]),
-//     Order.aggregate([
-//       {
-//         $group: {
-//           _id: null,
-//           averageOrderValue: { $avg: "$sumTotalPrice" },
-//         },
-//       },
-//       {
-//         $project: {
-//           averageOrderValue: { $round: ["$averageOrderValue", 2] },
-//         },
-//       },
-//     ]),
-//     Order.aggregate([
-//       {
-//         $group: {
-//           _id: "$username",
-//           totalSpending: { $sum: "$sumTotalPrice" },
-//         },
-//       },
-//       { $sort: { totalSpending: -1 } },
-//     ]),
-//     Order.aggregate([
-//       {
-//         $group: {
-//           _id: "$username",
-//           totalSpending: { $sum: "$sumTotalPrice" },
-//         },
-//       },
-//       { $sort: { totalSpending: -1 } },
-//       { $limit: 7 },
-//     ]),
-//     Order.aggregate([
-//       { $unwind: "$menu" },
-//       {
-//         $group: {
-//           _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
-//           totalQuantitySold: { $sum: "$menu.quantity" },
-//         },
-//       },
-//     ]),
-//   ]);
-
-//   res.status(200).json({
-//     status: "success",
-//     orderstats: {
-//       totalRevenueOvertime,
-//       popularMenuItems,
-//       averageOrderValue,
-//       userSpendingPatterns,
-//       topCustomers,
-//       quantitySoldOverTime,
-//     },
-//   });
-// });
-
 exports.orderStatistics = catchAsync(async (req, res, next) => {
   const result = await Order.aggregate([
     {
       $facet: {
+        totalRevenue: [
+          {
+            $group: {
+              _id: null,
+              totalRevenueNow: { $sum: "$sumTotalPrice" },
+            },
+          },
+        ],
         totalRevenueOvertime: [
           {
             $group: {
@@ -239,6 +163,7 @@ exports.orderStatistics = catchAsync(async (req, res, next) => {
   ]);
 
   const {
+    totalRevenue,
     totalRevenueOvertime,
     popularMenuItems,
     averageOrderValue,
@@ -250,6 +175,7 @@ exports.orderStatistics = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     orderstats: {
+      totalRevenue,
       totalRevenueOvertime,
       popularMenuItems,
       averageOrderValue,
