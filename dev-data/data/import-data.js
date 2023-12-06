@@ -1,7 +1,7 @@
 const fs = require("fs");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-// const Menu = require("../../models/menuModel");
+const Menu = require("../../models/menuModel");
 // const User = require("../../models/userModel");
 // const Reviews = require("../../models/reviewsModel");
 
@@ -21,7 +21,7 @@ mongoose
     console.log("DB connection error:", err.message);
   });
 
-// const menu = JSON.parse(fs.readFileSync(`${__dirname}/menu.json`, "utf-8"));
+const menu = JSON.parse(fs.readFileSync(`${__dirname}/menu.json`, "utf-8"));
 // const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, "utf-8"));
 // const reviews = JSON.parse(
 //   fs.readFileSync(`${__dirname}/reviews.json`, "utf-8")
@@ -29,9 +29,9 @@ mongoose
 
 const importData = async () => {
   try {
-    // await Menu.create(menu);
+    await Menu.create(menu);
     // await User.create(users);
-    await Reviews.create(reviews);
+    // await Reviews.create(reviews);
   } catch (err) {
     console.error("Error importing data:", err.message);
   }
@@ -40,7 +40,7 @@ const importData = async () => {
 
 const deleteData = async () => {
   try {
-    // await Menu.deleteMany();
+    await Menu.deleteMany();
     // await User.deleteMany();
     // await Reviews.deleteMany();
   } catch (err) {

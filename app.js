@@ -1,21 +1,22 @@
-const path = require("path");
 const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const compression = require("compression");
-const cors = require("cors");
+const path = require("path");
 
 const menuRouter = require("./routes/menuRouter");
 const orderRouter = require("./routes/orderRouter");
 const userRouter = require("./routes/userRouter");
 const reviewsRouter = require("./routes/reviewsRouter");
 
-const app = express();
-
 app.use(cors());
+app.use(bodyParser.json());
 // Serving static files
 app.use(express.static(path.join(__dirname, "public")));
 
