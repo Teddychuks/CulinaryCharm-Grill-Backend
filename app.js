@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 // Routes
 app.use("/menu", menuRouter);
 app.use("/orders", orderRouter);
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 app.use("/reviews", reviewsRouter);
 
 app.use(compression());
