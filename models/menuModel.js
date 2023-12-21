@@ -65,6 +65,12 @@ const menuSchema = new Schema(
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
+menuSchema.virtual("reviews", {
+  ref: "Reviews",
+  foreignField: "menu",
+  localField: "_id",
+});
+
 const Menu = mongoose.model("Menu", menuSchema);
 
 module.exports = Menu;

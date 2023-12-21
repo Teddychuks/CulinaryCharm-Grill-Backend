@@ -10,6 +10,7 @@ const orderSchema = new mongoose.Schema(
     username: {
       type: String,
       required: true,
+      index: true,
     },
 
     menu: [

@@ -8,6 +8,7 @@ router.route("/statistics").get(orderController.orderStatistics);
 
 router.use(authController.protect);
 router.route("/").get(orderController.getAllOrders);
+router.route("/user-orders").get(orderController.getUserOrders);
 router
   .route("/create")
   .post(authController.restrictTo("user"), orderController.createOrder);

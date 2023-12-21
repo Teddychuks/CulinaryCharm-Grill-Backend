@@ -70,6 +70,7 @@ reviewsSchema.statics.calcAverageRatings = async function (menuId) {
 
 // this.constructor refers to the model that the document belongs to, in this case, reviewsSchema.
 reviewsSchema.post("save", function () {
+  console.log(this.menu);
   this.constructor.calcAverageRatings(this.menu);
 });
 
@@ -81,7 +82,7 @@ reviewsSchema.pre(/^findOneAnd/, async function (next) {
 });
 
 reviewsSchema.post(/^findOneAnd/, async (doc) => {
-  if (doc) await doc.constructor.calcAverageRatings(doc.menu);
+  if (doc) await doc.constructor.calcAverageRatings(doc.menu._id);
 });
 
 const Reviews = mongoose.model("Reviews", reviewsSchema);

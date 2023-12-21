@@ -43,12 +43,27 @@ exports.createOrder = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.getUserOrders = catchAsync(async (req, res) => {
+  const username = req.user.name;
+  console.log(username);
+
+  const orders = await Order.find({ username: username }).sort({
+    createdAt: -1,
+  });
+
+  res.status(200).json({
+    status: "success",
+    results: orders.length,
+    orders: orders,
+  });
+});
+
 exports.getAllOrders = catchAsync(async (req, res, next) => {
   const order = await Order.find();
   res.status(200).json({
     status: "success",
     results: order.length,
-    data: { order },
+    order,
   });
 
   next();
@@ -101,6 +116,7 @@ exports.orderStatistics = catchAsync(async (req, res, next) => {
               totalRevenue: { $sum: "$sumTotalPrice" },
             },
           },
+          { $sort: { "_id.date": 1 } }, // Add this $sort stage to sort by date
         ],
         popularMenuItems: [
           { $unwind: "$menu" },
@@ -112,6 +128,7 @@ exports.orderStatistics = catchAsync(async (req, res, next) => {
             },
           },
           { $sort: { totalQuantitySold: -1 } },
+          { $limit: 7 },
         ],
         averageOrderValue: [
           {
@@ -157,6 +174,8 @@ exports.orderStatistics = catchAsync(async (req, res, next) => {
               totalQuantitySold: { $sum: "$menu.quantity" },
             },
           },
+          { $sort: { "_id.date": 1 } },
+          { $limit: 30 },
         ],
       },
     },

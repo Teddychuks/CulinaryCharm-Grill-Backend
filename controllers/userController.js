@@ -65,9 +65,7 @@ exports.getAccount = catchAsync(async (req, res, next) => {
     return next(new AppError(`No user with this ID:${req.params.id}`, 404));
   }
 
-  res.status(200).json({
-    data: { user },
-  });
+  res.status(200).json(user);
 });
 
 exports.deleteAccount = catchAsync(async (req, res, next) => {
