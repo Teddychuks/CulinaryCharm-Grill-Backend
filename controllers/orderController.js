@@ -151,6 +151,7 @@ exports.orderStatistics = catchAsync(async (req, res, next) => {
             },
           },
           { $sort: { totalSpending: -1 } },
+          { $limit: 7 },
         ],
         topCustomers: [
           {
@@ -174,8 +175,8 @@ exports.orderStatistics = catchAsync(async (req, res, next) => {
               totalQuantitySold: { $sum: "$menu.quantity" },
             },
           },
-          { $sort: { "_id.date": 1 } },
-          { $limit: 30 },
+          { $sort: { "_id.date": -1 } },
+          { $limit: 25 },
         ],
       },
     },

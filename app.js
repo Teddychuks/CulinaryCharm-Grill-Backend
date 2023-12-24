@@ -9,6 +9,7 @@ const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const compression = require("compression");
 const path = require("path");
+const rateLimit = require("express-rate-limit");
 
 const menuRouter = require("./routes/menuRouter");
 const orderRouter = require("./routes/orderRouter");
@@ -26,6 +27,14 @@ app.use(helmet());
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+// Rate Limits
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many request from this IP,please try again in an hour",
+});
+app.use("/api", limiter);
+
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
