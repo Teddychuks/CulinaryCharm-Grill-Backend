@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+const Mailjet = require("node-mailjet");
 const { convert } = require("html-to-text");
 
 module.exports = class Email {
@@ -9,43 +9,40 @@ module.exports = class Email {
     this.from = `CulinaryCharm Grill Restaurant <${process.env.EMAIL_FROM}>`;
   }
 
-  newTransport() {
-    if (process.env.NODE_ENV === "production") {
-      return nodemailer.createTransport({
-        host: process.env.EMAIL_HOST_BREVO,
-        port: process.env.EMAIL_PORT_BREVO,
-
-        auth: {
-          user: process.env.EMAIL_USERNAME_BREVO,
-          pass: process.env.EMAIL_PASSWORD_BREVO,
-        },
-      });
-    }
-
-    return nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
-
-      auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
-  }
-
-  // Send the actual email
   async send(htmlContent, subject) {
-    // Define the email options
-    const mailOptions = {
-      from: this.from,
-      to: this.to,
-      subject,
-      html: htmlContent,
-      text: convert(htmlContent),
-    };
+    const mailjet = Mailjet.apiConnect(
+      process.env.MAILJET_PUBLIC_KEY,
+      process.env.MAILJET_SECRET_KEY
+    );
 
-    // Create a transport and send email
-    await this.newTransport().sendMail(mailOptions);
+    console.log("Public key: " + process.env.MAILJET_PUBLIC_KEY);
+    console.log("Private key: " + process.env.MAILJET_SECRET_KEY);
+
+    const request = mailjet.post("send", { version: "v3.1" }).request({
+      Messages: [
+        {
+          From: {
+            Email: process.env.EMAIL_FROM,
+            Name: "CulinaryCharm Grill Restaurant",
+          },
+          To: [
+            {
+              Email: this.to,
+              Name: this.firstName,
+            },
+          ],
+          Subject: subject,
+          HTMLPart: convert(htmlContent),
+        },
+      ],
+    });
+
+    try {
+      const result = await request;
+      console.log(result.body);
+    } catch (err) {
+      console.error(err.statusCode);
+    }
   }
 
   async sendWelcome() {
