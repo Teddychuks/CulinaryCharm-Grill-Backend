@@ -18,7 +18,6 @@ const reviewsRouter = require("./routes/reviewsRouter");
 
 // Define allowed origins
 const allowedOrigins = ["http://localhost:5173"];
-
 // Configure CORS options
 const corsOptions = {
   origin: function (origin, callback) {
