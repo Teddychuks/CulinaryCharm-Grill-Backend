@@ -16,7 +16,7 @@ const orderRouter = require("./routes/orderRouter");
 const userRouter = require("./routes/userRouter");
 const reviewsRouter = require("./routes/reviewsRouter");
 
-app.use(cors());
+app.use(cors({ origin: "*", credentials: true }));
 app.use(bodyParser.json());
 // Serving static files
 app.use(express.static(path.join(__dirname, "public")));
