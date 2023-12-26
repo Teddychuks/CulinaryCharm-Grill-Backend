@@ -16,23 +16,7 @@ const orderRouter = require("./routes/orderRouter");
 const userRouter = require("./routes/userRouter");
 const reviewsRouter = require("./routes/reviewsRouter");
 
-// Define allowed origins
-const allowedOrigins = ["http://localhost:5173"];
-// Configure CORS options
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-};
-
-// Apply CORS globally
-app.use(cors(corsOptions));
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(helmet());
