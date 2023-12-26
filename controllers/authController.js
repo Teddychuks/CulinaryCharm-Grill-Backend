@@ -41,19 +41,26 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
-  const newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-  });
+  try {
+    const newUser = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      passwordConfirm: req.body.passwordConfirm,
+    });
 
-  const url = `${req.protocol}://${req.get("host")}user/myaccount`;
+    const url = `${req.protocol}://${req.get("host")}user/myaccount`;
 
-  await new Email(newUser, url).sendWelcome();
-  // await new Email(newUser, url);
+    await new Email(newUser, url).sendWelcome();
 
-  createSendToken(newUser, 201, res);
+    createSendToken(newUser, 201, res);
+  } catch (error) {
+    // Handle the specific error related to sending emails
+    console.error("Error sending welcome email:", error);
+
+    // Continue with the rest of the request handling
+    createSendToken(newUser, 201, res);
+  }
 });
 
 exports.login = catchAsync(async (req, res, next) => {
