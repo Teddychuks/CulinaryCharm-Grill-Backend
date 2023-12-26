@@ -16,23 +16,38 @@ const orderRouter = require("./routes/orderRouter");
 const userRouter = require("./routes/userRouter");
 const reviewsRouter = require("./routes/reviewsRouter");
 
-app.use(cors());
-app.use(bodyParser.json());
-// Serving static files
-app.use(express.static(path.join(__dirname, "public")));
+// Define allowed origins
+const allowedOrigins = ["http://localhost:5173"];
 
+// Configure CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+// Apply CORS globally
+app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "public")));
 app.use(helmet());
 
-// Body parser,reading data from the body into req.body
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-// Rate Limits
+
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
-  message: "Too many request from this IP,please try again in an hour",
+  message: "Too many requests from this IP, please try again in an hour",
 });
+
 app.use("/api", limiter);
 
 app.use(express.json({ limit: "10kb" }));
@@ -46,7 +61,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes
 app.use("/menu", menuRouter);
 app.use("/orders", orderRouter);
 app.use("/user", userRouter);
