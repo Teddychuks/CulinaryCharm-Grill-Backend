@@ -16,7 +16,15 @@ const orderRouter = require("./routes/orderRouter");
 const userRouter = require("./routes/userRouter");
 const reviewsRouter = require("./routes/reviewsRouter");
 
-app.use(cors("*"));
+// Use cors as a middleware with the desired configuration
+app.use(
+  cors({
+    origin: "https://culinarycharmgrill.netlify.app",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // Enable credentials (e.g., cookies)
+  })
+);
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(helmet());
