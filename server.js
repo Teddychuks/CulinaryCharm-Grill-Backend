@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = require("./app");
+const cron = require("node-cron");
+const axios = require("axios");
 
 dotenv.config({ path: "./config.env" });
 
@@ -20,4 +22,20 @@ mongoose.connect(DB).then(() => {
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}....`);
+});
+
+// Function to send a request to your server
+const sendRequest = async () => {
+  try {
+    // Modify the URL and endpoint based on your server setup
+    const response = await axios.get("https://culinarycharmgrill.onrender.com");
+    console.log("Request sent successfully", response.data);
+  } catch (error) {
+    console.error("Error sending request", error.message);
+  }
+};
+
+// Schedule the cron job every 14 minutes
+cron.schedule("*/14 * * * *", () => {
+  sendRequest();
 });
