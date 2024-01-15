@@ -26,15 +26,11 @@ const server = app.listen(port, () => {
 
 // Function to send a request to your server
 const sendRequest = async () => {
-  try {
-    // Modify the URL and endpoint based on your server setup
-    const response = await axios.get(
-      "https://culinarycharmgrill.onrender.com/menu/cocktail/656e347d1fdb19422c8ebed0"
-    );
-    console.log("Request sent successfully", response.data);
-  } catch (error) {
-    console.error("Error sending request", error.message);
-  }
+  // Modify the URL and endpoint based on your server setup
+  const response = await axios.get(
+    "https://culinarycharmgrill.onrender.com/menu/cocktail/656e347d1fdb19422c8ebed0"
+  );
+  console.log("Request sent successfully", response.data);
 };
 
 // Schedule the cron job every 14 minutes
