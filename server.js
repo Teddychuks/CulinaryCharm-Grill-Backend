@@ -28,7 +28,9 @@ const server = app.listen(port, () => {
 const sendRequest = async () => {
   try {
     // Modify the URL and endpoint based on your server setup
-    const response = await axios.get("https://culinarycharmgrill.onrender.com");
+    const response = await axios.get(
+      "https://culinarycharmgrill.onrender.com/menu/appetizer"
+    );
     console.log("Request sent successfully", response.data);
   } catch (error) {
     console.error("Error sending request", error.message);
