@@ -29,7 +29,7 @@ const sendRequest = async () => {
   try {
     // Modify the URL and endpoint based on your server setup
     const response = await axios.get(
-      "https://culinarycharmgrill.onrender.com/menu/appetizer"
+      "https://culinarycharmgrill.onrender.com/menu/cocktail/656e347d1fdb19422c8ebed0"
     );
     console.log("Request sent successfully", response.data);
   } catch (error) {
